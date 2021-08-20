@@ -1,0 +1,11 @@
+---
+- hosts: leafs_DC1, leafs_DC2
+  gather_facts: no
+  tasks:
+  - name: Create template
+    template:
+      src: "~/project/labfiles/AristaTraining/Ansible-Part2/templates/vlans.j2"
+      dest: "~/project/labfiles/AristaTraining/Ansible-Part2/configs/vlans.cfg"
+  - name: Upload config
+    eos_config:
+      src: "~/project/labfiles/AristaTraining/Ansible-Part2/configs/vlans.cfg"
