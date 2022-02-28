@@ -1,0 +1,11 @@
+---
+- hosts: borderleaf1-DC1, borderleaf1-DC2, leaf1-DC1, leaf1-DC2
+  gather_facts: no
+  tasks:
+  - name: Create template
+    template:
+      src: "~/project/labfiles/AristaTraining/Ansible-Part2/templates/build_odd_mlag.j2"
+      dest: "~/project/labfiles/AristaTraining/Ansible-Part2/configs/build_odd_mlag.cfg"
+  - name: Upload config
+    eos_config:
+      src: "~/project/labfiles/AristaTraining/Ansible-Part2/configs/build_odd_mlag.cfg"

@@ -1,0 +1,14 @@
+- hosts: all
+  gather_facts: no
+  tasks:
+  - name: Add User
+    eos_user:
+      name: automator 
+      nopassword: yes
+      privilege: 15
+      role: network-admin
+      state: present
+  - name: Add SSH key
+    eos_config:
+      lines:
+        - "username automator ssh-key ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCpgB1IZq/P4s29ZNv4RuIonB96h2uw6gxtG8/ejR3ZRXPRljDri8zpGIgYlCUzkbrvijusvGtDDIodf6TnCmICHKOJo9MRLJZPq4nbvWI9JbJyKErIvwz2Sx7fv+shPWgxIbZAfAsawpLKC453zGHMu7XpQTpe5ydETCo1f3huTjOsxbjf3+H2lN2rRBNcJk+yzQ3ZjGJZr4fn5DBdxljpHI+Lrb9JzBDE72+YtD3UN7fUDydrg0PsYabiNsP6OMhgMOOy4QpKVPsmBl0n4SSddJ8hrsW2ojDNACpGUVWiomMoiVQPoSGd0bCDSFHvG++2IUt44j1gJ+QrW1q7xc1J arista@ace-l5-nam-5-93d56c28"
